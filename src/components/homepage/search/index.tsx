@@ -1,5 +1,4 @@
 import { useDebounce } from '@/src/hooks/debounce'
-import { IUser } from '@/src/models/models'
 import { useSearchUsersQuery } from '@/src/store/features/github-api/github.api'
 import { useEffect, useState } from 'react'
 
