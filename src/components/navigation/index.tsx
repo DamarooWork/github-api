@@ -3,7 +3,7 @@ export default function Index() {
   const linkClasses =
     'border-2 p-2 rounded-2xl will-change-transform hover:scale-105 duration-200'
   return (
-    <header className="sticky min-h-[50px] flex justify-between items-center  p-4 shadow-white shadow-md">
+    <header className="sticky min-h-[50px] flex justify-between items-center  p-4 shadow-white shadow-md mb-10">
       <h3 className="font-bold">Github Search</h3>
       <nav className="flex gap-5">
         <Link className={linkClasses} href="/">
