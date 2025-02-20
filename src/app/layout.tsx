@@ -1,5 +1,5 @@
 import './globals.css'
-
+import Navigation from '@/src/components/navigation'
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,7 +7,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <title>Github api</title>
+        <link rel="icon" href="/icon.png" type="image/png" />
+      </head>
+
+      <body>
+        <Navigation />
+        <main>{children}</main>
+      </body>
     </html>
   )
 }

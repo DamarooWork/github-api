@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <main>
-      <h1>Hello, Next.js!</h1>
-    </main>
+    <section className=" flex justify-center items-center">
+      <h1 className="text-4xl">Hello, Next.js!</h1>
+    </section>
   )
 }
