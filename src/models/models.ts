@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export interface ServerResponce<T> {
   total_count: number
   incomplete_results: boolean
@@ -108,8 +109,6 @@ export interface IRepo {
   watchers: number
   default_branch: string
 }
-
-
 
 export interface IOwner {
   login: string

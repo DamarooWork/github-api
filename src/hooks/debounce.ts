@@ -10,6 +10,6 @@ export function useDebounce(value: string, delay = 300): string {
     return () => {
       clearTimeout(id)
     }
-  }, [value])
+  }, [value, delay])
   return debounced
 }
