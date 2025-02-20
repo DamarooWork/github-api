@@ -18,8 +18,7 @@ export default function Index({
     skip: debouced.length < 2,
   })
   useEffect(() => {
-    /* eslint-disable  @typescript-eslint/no-non-null-assertion */
-    setDropDown(debouced.length > 1 && users?.length! > 0)
+    setDropDown(debouced.length > 1 && users !== undefined && users?.length > 0)
   }, [debouced, users])
   const handleClick = (username: string) => {
     handleUserClick(username)
