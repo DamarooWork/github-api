@@ -1,7 +1,7 @@
 import { IRepo } from '@/src/models/models'
 import RepoCard from './RepoCard'
 
-export default function index({
+export default function Index({
   repos,
   areReposLoading,
 }: {

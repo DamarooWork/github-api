@@ -1,7 +1,7 @@
 'use client'
 import { useAppSelector } from '@/src/store/hooks'
 
-export default function index() {
+export default function Index() {
   const { favourites } = useAppSelector((state) => state.github)
 
   return (
