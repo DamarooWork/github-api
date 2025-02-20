@@ -12,7 +12,7 @@ export default function index({
     <section className="relative w-[560px] mt-4">
       {areReposLoading && <p className="text-center">Repos are loading...</p>}
       {repos?.length && (
-        <ul className="flex flex-col gap-5">
+        <ul className="flex flex-col gap-5 ">
           {repos.map((repo: IRepo) => (
             <RepoCard key={repo.id} repo={repo} />
           ))}

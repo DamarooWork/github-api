@@ -1,10 +1,26 @@
 import { IRepo } from '@/src/models/models'
+import {
+  addFavorite,
+  removeFavorite,
+} from '@/src/store/features/github-api/githubSlice'
+import { useAppSelector } from '@/src/store/hooks'
+import { useDispatch } from 'react-redux'
 
 export default function RepoCard({ repo }: { repo: IRepo }) {
+  const { favourites } = useAppSelector((state) => state.github)
+  const dispatch = useDispatch()
+  const handleAddClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    dispatch(addFavorite(repo.html_url))
+  }
+  const handleRemoveClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    dispatch(removeFavorite(repo.html_url))
+  }
   return (
-    <li className="">
+    <li className="border-2 rounded">
       <a
-        className="p-4 flex flex-col gap-2  border-2 rounded hover:shadow-md hover:bg-gray-800 transition-all"
+        className="p-4 flex flex-col gap-2   hover:shadow-md hover:bg-gray-800 transition-all"
         href={repo.html_url}
         target="_blank"
       >
@@ -18,6 +34,21 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
             <h3 className="text-xl">Description:</h3>
             <p className="font-[200] italic "> {repo?.description}</p>
           </>
+        )}
+        {favourites.includes(repo.html_url) ? (
+          <button
+            className="py-2 px-4  rounded bg-red-500 w-32 text-black"
+            onClick={handleRemoveClick}
+          >
+            Remove
+          </button>
+        ) : (
+          <button
+            className="py-2 px-4  rounded bg-yellow-500 w-32 text-black"
+            onClick={handleAddClick}
+          >
+            Add
+          </button>
         )}
       </a>
     </li>

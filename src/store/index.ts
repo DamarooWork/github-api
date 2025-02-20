@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { githubApi } from './features/github-api/github.api'
+import { githubReducer } from './features/github-api/githubSlice'
 
 export const makeStore = () => {
   return configureStore({
-    reducer: { [githubApi.reducerPath]: githubApi.reducer },
+    reducer: {
+      [githubApi.reducerPath]: githubApi.reducer,
+      github: githubReducer,
+    },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(githubApi.middleware),
   })
