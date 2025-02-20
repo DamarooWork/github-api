@@ -1,5 +1,5 @@
 import { IRepo } from '@/src/models/models'
-import Repo from './Repo'
+import RepoCard from './RepoCard'
 
 export default function index({
   repos,
@@ -9,12 +9,12 @@ export default function index({
   areReposLoading: boolean
 }) {
   return (
-    <section className="relative w-[560px]">
+    <section className="relative w-[560px] mt-4">
       {areReposLoading && <p className="text-center">Repos are loading...</p>}
       {repos?.length && (
-        <ul>
+        <ul className="flex flex-col gap-5">
           {repos.map((repo: IRepo) => (
-           <Repo repo={repo}/>
+            <RepoCard  key={repo.id} repo={repo} />
           ))}
         </ul>
       )}
