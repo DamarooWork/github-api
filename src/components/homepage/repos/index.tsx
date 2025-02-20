@@ -14,7 +14,7 @@ export default function index({
       {repos?.length && (
         <ul className="flex flex-col gap-5">
           {repos.map((repo: IRepo) => (
-            <RepoCard  key={repo.id} repo={repo} />
+            <RepoCard key={repo.id} repo={repo} />
           ))}
         </ul>
       )}

@@ -1,7 +1,8 @@
 import Link from 'next/link'
+
 export default function Index() {
   const linkClasses =
-    'border-2 p-2 rounded-2xl will-change-transform hover:scale-105 duration-200'
+    'p-2 rounded will-change-transform hover:scale-105 hover:-translate-y-[2px] duration-200 hover:bg-gray-800'
   return (
     <header className="sticky min-h-[50px] flex justify-between items-center  p-4 shadow-white shadow-md mb-10">
       <h3 className="font-bold">Github Search</h3>
