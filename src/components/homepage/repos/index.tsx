@@ -13,7 +13,7 @@ export default function Index({
     <section className="relative w-[90vw] mt-4 flex justify-center items-center">
       {areReposLoading ? (
         <p className="text-center">
-          <Loading width={200} />
+          <Loading width={'200'} />
         </p>
       ) : repos?.length ? (
         <ul className="flex gap-5 flex-wrap justify-between">

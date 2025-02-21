@@ -43,7 +43,7 @@ export default function Index({
         <ul className=" absolute top-[100px] left-0 right-0 max-h-[60vh] shadow-md bg-white text-gray-500  overflow-y-auto z-40 text-5xl">
           {isUsersLoading ? (
             <li className="py-2 px-4 text-center">
-              <Loading width={200} />
+              <Loading width={'200'} />
             </li>
           ) : (
             users?.map((user) => (
