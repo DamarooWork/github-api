@@ -1,6 +1,6 @@
 Search with Github API
 
-Deploy: [https://github-api-ivory-five.vercel.app/](https://damaroo-github-api.vercel.app/)
+Deploy: https://damaroo-github-api.vercel.app/
 
 Stack:
 > Nextjs |
