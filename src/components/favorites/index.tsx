@@ -13,7 +13,7 @@ export default function Index() {
           ))}
         </ul>
       ) : (
-        <p>No favourites U_U</p>
+        <p>No favourites</p>
       )}
     </section>
   )
