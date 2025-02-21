@@ -1,6 +1,6 @@
 import { InfinitySpin } from 'react-loader-spinner'
 
-export default function Loading({ width = 200 }: { width: number }) {
+export default function Loading({ width = 200 }: { width: string | number }) {
   return (
     <InfinitySpin
       visible={true}
