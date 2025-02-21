@@ -1,6 +1,7 @@
+import { LS_FAV_KEY } from '@/src/lib/constants'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const LS_FAV_KEY = 'rfk'
+
 
 interface GithubState {
   favourites: string[]
