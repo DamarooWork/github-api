@@ -5,12 +5,5 @@ export default function Loading({
 }: {
   width: string | undefined
 }) {
-  return (
-    <InfinitySpin
-      visible={true}
-      width={width}
-      color="#fff"
-      ariaLabel="infinity-spin-loading"
-    />
-  )
+  return <InfinitySpin width={width} color="#fff" />
 }
