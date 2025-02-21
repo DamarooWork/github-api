@@ -18,9 +18,9 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
     dispatch(removeFavorite(repo.html_url))
   }
   return (
-    <li className="border-2 rounded">
+    <li className="border-2 rounded max-w-[600px] hover:shadow-md hover:bg-gray-800 transition-all">
       <a
-        className="p-4 flex flex-col gap-2   hover:shadow-md hover:bg-gray-800 transition-all"
+        className="p-4 flex flex-col justify-between gap-2 h-full"
         href={repo.html_url}
         target="_blank"
       >
@@ -39,6 +39,7 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
           <button
             className="py-2 px-4  rounded bg-red-500 w-32 text-black"
             onClick={handleRemoveClick}
+            title="Remove from favorites"
           >
             Remove
           </button>
@@ -46,6 +47,7 @@ export default function RepoCard({ repo }: { repo: IRepo }) {
           <button
             className="py-2 px-4  rounded bg-yellow-500 w-32 text-black"
             onClick={handleAddClick}
+            title="Add to favorites"
           >
             Add
           </button>

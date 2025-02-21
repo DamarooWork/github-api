@@ -1,5 +1,6 @@
 import { IRepo } from '@/src/models/models'
 import RepoCard from './RepoCard'
+import Loading from '../../ui/Loading'
 
 export default function Index({
   repos,
@@ -9,14 +10,19 @@ export default function Index({
   areReposLoading: boolean
 }) {
   return (
-    <section className="relative w-[560px] mt-4">
-      {areReposLoading && <p className="text-center">Repos are loading...</p>}
-      {repos?.length && (
-        <ul className="flex flex-col gap-5 ">
+    <section className="relative w-[90vw] mt-4 flex justify-center items-center">
+      {areReposLoading ? (
+        <p className="text-center">
+          <Loading width={200} />
+        </p>
+      ) : repos?.length ? (
+        <ul className="flex gap-5 flex-wrap justify-between">
           {repos.map((repo: IRepo) => (
             <RepoCard key={repo.id} repo={repo} />
           ))}
         </ul>
+      ) : (
+        <p className="text-2xl">No repositories founded U_U</p>
       )}
     </section>
   )

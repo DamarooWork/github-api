@@ -1,14 +1,15 @@
 import { LS_FAV_KEY } from '@/src/lib/constants'
+import { getFromLocalStorage } from '@/src/lib/utils'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-
 
 interface GithubState {
   favourites: string[]
 }
 
 const initialState: GithubState = {
-  favourites: JSON.parse(localStorage.getItem(LS_FAV_KEY)! ?? []),
+  favourites: getFromLocalStorage(LS_FAV_KEY)
+    ? JSON.parse(getFromLocalStorage(LS_FAV_KEY) || '[]')
+    : [],
 }
 
 export const githubSlice = createSlice({
@@ -20,7 +21,9 @@ export const githubSlice = createSlice({
       localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
     },
     removeFavorite(state, action: PayloadAction<string>) {
-      state.favourites = state.favourites.filter((fav) => fav !== action.payload)
+      state.favourites = state.favourites.filter(
+        (fav) => fav !== action.payload
+      )
       localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites))
     },
   },

@@ -1,25 +1,30 @@
 import { useDebounce } from '@/src/hooks/debounce'
 import { useSearchUsersQuery } from '@/src/store/features/github-api/github.api'
 import { useEffect, useState } from 'react'
+import Loading from '../../ui/Loading'
 
 export default function Index({
   handleUserClick,
 }: {
   handleUserClick: (username: string) => void
 }) {
+  console.log('render search')
+
   const [search, setSearch] = useState<string>('')
   const [dropDown, setDropDown] = useState(false)
-  const debouced = useDebounce(search)
+  const debounced = useDebounce(search)
   const {
     isLoading: isUsersLoading,
     isError: isUsersError,
     data: users,
-  } = useSearchUsersQuery(debouced, {
-    skip: debouced.length < 2,
+  } = useSearchUsersQuery(debounced, {
+    skip: debounced.length < 2,
   })
   useEffect(() => {
-    setDropDown(debouced.length > 1 && users !== undefined && users?.length > 0)
-  }, [debouced, users])
+    setDropDown(
+      debounced.length > 1 && users !== undefined && users?.length > 0
+    )
+  }, [debounced, users])
   const handleClick = (username: string) => {
     handleUserClick(username)
     setDropDown(false)
@@ -37,7 +42,9 @@ export default function Index({
       {dropDown && (
         <ul className=" absolute top-[100px] left-0 right-0 max-h-[60vh] shadow-md bg-white text-gray-500  overflow-y-auto z-40 text-5xl">
           {isUsersLoading ? (
-            <li className="py-2 px-4 text-center">Loading...</li>
+            <li className="py-2 px-4 text-center">
+              <Loading width={200} />
+            </li>
           ) : (
             users?.map((user) => (
               <li

@@ -1,3 +1,4 @@
+'use client'
 import Favorites from '@/src/components/favorites'
 
 export default function page() {
