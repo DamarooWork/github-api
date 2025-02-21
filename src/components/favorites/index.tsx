@@ -5,7 +5,7 @@ export default function Index() {
   const { favourites } = useAppSelector((state) => state.github)
 
   return (
-    <section className="mt-4 text-2xl">
+    <section className="mt-4 ">
       {favourites?.length ? (
         <ul className="flex flex-col gap-4  ">
           {favourites.map((fav) => (

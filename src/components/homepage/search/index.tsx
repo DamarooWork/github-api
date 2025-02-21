@@ -1,17 +1,18 @@
 import { useDebounce } from '@/src/hooks/debounce'
 import { useSearchUsersQuery } from '@/src/store/features/github-api/github.api'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, memo, useRef, useState } from 'react'
 import Loading from '../../ui/Loading'
+import { useClickOutside } from '@/src/hooks/useClickOutside'
 
-export default function Index({
+export default memo(function Index({
   handleUserClick,
 }: {
   handleUserClick: (username: string) => void
 }) {
-  console.log('render search')
-
   const [search, setSearch] = useState<string>('')
   const [dropDown, setDropDown] = useState(false)
+  const ref = useRef<HTMLElement>(null)
+  useClickOutside(ref, () => setDropDown(false))
   const debounced = useDebounce(search)
   const {
     isLoading: isUsersLoading,
@@ -20,27 +21,38 @@ export default function Index({
   } = useSearchUsersQuery(debounced, {
     skip: debounced.length < 2,
   })
-  useEffect(() => {
-    setDropDown(
-      debounced.length > 1 && users !== undefined && users?.length > 0
-    )
-  }, [debounced, users])
   const handleClick = (username: string) => {
+    setSearch(username)
     handleUserClick(username)
     setDropDown(false)
   }
+  const handleInputClick = () => {
+    setDropDown(
+      debounced.length > 1 && users !== undefined && users?.length > 0
+    )
+  }
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDropDown(
+      debounced.length > 1 && users !== undefined && users?.length > 0
+    )
+    setSearch(e.target.value)
+  }
   return (
-    <section className="relative w-[90vw] ">
+    <section ref={ref} className="relative w-[90vw]">
       <input
-        className="border py-2 px-4 w-full h-[100px] mb-2 text-[var(--background)] text-6xl placeholder:text-center text-center outline-green-200 rounded"
+        onClick={handleInputClick}
+        className="border py-2 px-4 w-full h-[100px] mb-2 text-[var(--background)] text-2xl sm:text-6xl placeholder:text-center text-center outline-green-200 rounded"
         placeholder="Search for Github username"
         type="text"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => handleInputChange(e)}
       />
       {isUsersError && <p className="text-red-600">Something went wrong</p>}
       {dropDown && (
-        <ul className=" absolute top-[100px] left-0 right-0 max-h-[60vh] shadow-md bg-white text-gray-500  overflow-y-auto z-40 text-5xl">
+        <ul
+          key={debounced}
+          className=" absolute top-[100px] left-0 right-0 max-h-[60vh] shadow-md bg-white text-gray-500  overflow-y-auto z-40 text-2xl sm:text-5xl"
+        >
           {isUsersLoading ? (
             <li className="py-2 px-4 text-center">
               <Loading width={'200'} />
@@ -60,4 +72,4 @@ export default function Index({
       )}
     </section>
   )
-}
+})

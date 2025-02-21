@@ -16,7 +16,7 @@ export default function Index({
           <Loading width={'200'} />
         </p>
       ) : repos?.length ? (
-        <ul className="flex gap-5 flex-wrap justify-between">
+        <ul className="flex gap-5 flex-col ">
           {repos.map((repo: IRepo) => (
             <RepoCard key={repo.id} repo={repo} />
           ))}

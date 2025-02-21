@@ -8,7 +8,7 @@ export default function Favorite({ fav }: { fav: string }) {
     dispatch(removeFavorite(fav))
   }
   return (
-    <li className="flex border-[1px] rounded">
+    <li className="flex border-[1px] rounded text-sm sm:text-2xl max-w-[90vw]">
       <a
         className="p-4 w-full block hover:bg-gray-800 transition-all active:bg-gray-700 rounded-l"
         href={fav}
@@ -17,7 +17,7 @@ export default function Favorite({ fav }: { fav: string }) {
         {fav}
       </a>
       <button
-        className="py-2 px-4  bg-red-600 w-32 text-black rounded-r hover:bg-red-500 transition-all active:bg-red-400"
+        className="sm:py-2 sm:px-4 px-1 bg-red-600 w-16 sm:w-32 text-black rounded-r hover:bg-red-500 transition-all active:bg-red-400"
         onClick={() => handleRemoveClick(fav)}
       >
         Remove
